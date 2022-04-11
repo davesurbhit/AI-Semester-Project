@@ -1,0 +1,73 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_help
+  # - intent: mood_great
+  # - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+  - action: utter_morehelp
+
+- story: sad path 2
+  steps:
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+  - action: utter_morehelp
+  - intent: deny
+  - action: utter_happy
+
+- story: corona information path
+  steps:
+  - intent: corona_states
+  - action: utter_help
+  - intent: what_covid
+  - action: utter_geninfo
+  - action: utter_morehelp
+  - intent: deny
+  - action: utter_happy
+
+- story: corona symptoms path
+  steps:
+  - intent: corona_states
+  - action: utter_help
+  - intent: symptoms_covid
+  - action: utter_symptoms
+  - action: utter_morehelp
+  - intent: deny
+  - action: utter_happy
+
+- story: corona tested positive path
+  steps:
+  - intent: corona_states
+  - action: utter_help
+  - intent: what_if_positive
+  - action: utter_positive_help
+  - action: utter_morehelp
+  - intent: deny
+  - action: utter_happy
+
+
+
+# - story: corona tracker
+#   steps:
+#   - intent: greet
+#   - action: utter_help
+#   - intent: need_information
+#   - action: utter_whichstate
+#   - intent: corona_states
+#     entities:
+#     - state: "Madhya Pradesh"
+#   - action: utter_deletelater
